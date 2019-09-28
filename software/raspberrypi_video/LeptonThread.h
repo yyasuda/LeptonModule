@@ -22,6 +22,12 @@ public:
   LeptonThread();
   ~LeptonThread();
 
+  void useColormap(int);
+  void useLepton(int);
+  void useSpiSpeedMhz(unsigned int);
+  void setAutomaticScalingRange();
+  void useRangeMinValue(uint16_t);
+  void useRangeMaxValue(uint16_t);
   void run();
 
 public slots:
@@ -33,6 +39,17 @@ signals:
 
 private:
 
+  int typeColormap;
+  const int *selectedColormap;
+  int selectedColormapSize;
+  int typeLepton;
+  unsigned int spiSpeed;
+  bool autoRangeMin;
+  bool autoRangeMax;
+  uint16_t rangeMin;
+  uint16_t rangeMax;
+  int myImageWidth;
+  int myImageHeight;
   QImage myImage;
 
   uint8_t result[PACKET_SIZE*PACKETS_PER_FRAME];
